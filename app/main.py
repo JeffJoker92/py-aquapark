@@ -92,5 +92,7 @@ class Slide:
                 height=visitor.height
             )
             return True
-        except ValueError or TypeError:
+        except ValueError:
+            return False
+        except TypeError:
             return False
