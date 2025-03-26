@@ -20,17 +20,17 @@ class IntegerRange:
 
     def __get__(self,
                 instance: Any,
-                owner: type) -> None:
-        getattr(instance, self.protected_name)
+                owner: type) -> Any:
+        return getattr(instance, self.protected_name)
 
     def __set__(self,
                 instance: Any,
-                value: Any) -> Any:
+                value: Any) -> None:
         if not isinstance(value, int):
             raise TypeError
         if not (self.min_amount <= value <= self.max_amount):
             raise ValueError
-        return setattr(instance, self.protected_name, value)
+        setattr(instance, self.protected_name, value)
 
 
 class Visitor:
